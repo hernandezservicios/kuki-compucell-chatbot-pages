@@ -1,0 +1,43 @@
+name: Publicar en GitHub Pages
+
+# Publica la carpeta frontend/ (el único contenido de este repositorio
+# además de este workflow) cada vez que cambia en main. Usa el método
+# "Pages mediante GitHub Actions" — el modo simple "Deploy from a
+# branch" solo sirve / o /docs, no /frontend.
+
+on:
+  push:
+    branches: ["main"]
+    paths: ["frontend/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empaquetar la carpeta frontend/
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "frontend"
+
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

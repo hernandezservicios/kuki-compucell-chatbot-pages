@@ -1,0 +1,11 @@
+# Este repositorio solo debe contener frontend/ y el workflow de
+# GitHub Actions. Defensivo: nada de esto debería aparecer aquí jamás.
+*.env
+.env.*
+*.pem
+*.key
+*secret*
+*credentials*
+.DS_Store
+Thumbs.db
+node_modules/

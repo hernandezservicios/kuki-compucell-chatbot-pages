@@ -1,0 +1,79 @@
+/*
+  Kuki CompuCell — Consulta de Inventario
+  Design tokens: "consola de diagnóstico" — navy profundo + azul eléctrico,
+  inspirado en el mundo de un banco de trabajo de reparación, no en un
+  dashboard SaaS genérico.
+*/
+
+:root {
+  /* ---- Color: superficies (navy en capas) ---- */
+  --navy-950: #080e1d;   /* fondo de página */
+  --navy-900: #0e1830;   /* paneles principales */
+  --navy-800: #15213d;   /* burbujas, inputs, tarjetas */
+  --navy-700: #1e2c4d;   /* bordes, divisores, hover */
+  --navy-650: #26355a;   /* hover de superficie elevada */
+
+  /* ---- Color: acento azul (marca) ---- */
+  --blue-600: #2a5ce0;   /* fondos sólidos de botones/CTA (3.1:1 vs panel, AA no-texto) */
+  --blue-500: #3d7bff;   /* enlaces, íconos, bordes activos */
+  --blue-300: #8fb4ff;   /* foco de teclado, acentos secundarios */
+  --blue-200: #c4d7ff;   /* glow / destellos sutiles */
+
+  /* ---- Color: texto ---- */
+  --ink-100: #f3f6fd;    /* texto primario sobre navy */
+  --ink-300: #c3cde3;    /* texto secundario */
+  --ink-500: #93a1c4;    /* texto terciario / timestamps */
+
+  /* ---- Color: semántico (estado, no decorativo) ---- */
+  --ok-500: #33c17d;
+  --ok-200: #b7f2d6;
+  --warn-500: #e2574c;
+  --warn-200: #f8c9c4;
+  --amber-500: #e2a33c;
+
+  /* ---- Tipografía ---- */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+
+  --fs-h1: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+  --fs-h2: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-tiny: 0.75rem;
+
+  --lh-body: 1.55;
+
+  /* ---- Espaciado (escala de 4px) ---- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+
+  /* ---- Forma / elevación ----
+     Nada de sombra gris genérica: elevación = borde de 1px +
+     un filo superior más claro, como una pantalla con retroiluminación. */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --edge: 1px solid var(--navy-700);       /* divisores decorativos, no interactivos */
+  --edge-control: 1px solid #4d6ead;       /* borde de inputs/botones: 3:1+ vs panel (WCAG 1.4.11) */
+  --edge-active: 1px solid var(--blue-500);
+
+  --glow-sm: 0 0 0 1px var(--navy-700) inset, 0 1px 0 0 rgba(143, 180, 255, 0.08) inset;
+  --glow-focus: 0 0 0 3px rgba(143, 180, 255, 0.35);
+
+  --duration-fast: 150ms;
+  --duration-base: 320ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: light) {
+  /* El producto es una consola técnica: se mantiene oscura siempre.
+     No se redefinen tokens para modo claro a propósito. */
+}
